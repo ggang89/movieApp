@@ -8,7 +8,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/movie/:id" element={<Detail />} />
+        <Route path="/movie/:idd" element={<Detail />} />
+        {/* :idd는 변수명임. useParams변수명이랑 일키시키기 */}
         <Route path="*" element={<h1>Not Found Page</h1> } />
       </Routes>
     </Router>   

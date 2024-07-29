@@ -24,12 +24,13 @@ export default function Home() {
     const json = await response.json();
     setLoading(false);
     setMovies(json.data.movies);
+    console.log(json);
   };
 
   useEffect(() => {
     getMovies(); //모든 렌더링 후에 실행되는 코드
   }, []);
-  console.log(movies);
+
 
   return (
     <>
@@ -42,6 +43,7 @@ export default function Home() {
           {movies.map((movie) => (
             <Movie
               key={movie.id}
+              id={movie.id}
               img={movie.medium_cover_image}
               title={movie.title}
               summary={movie.summary}

@@ -1,12 +1,15 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-export default function Movie({id, img, title, summary, genres }) {
+export default function Movie({ id, img, title, summary, genres }) {
+  console.log("id", id);
+  //여기 id값이 안 들어옴 undefined
   return (
     <div>
       <img src={img} alt={title}></img>
       <h2>
         <Link to={`/movie/${id}`}>{title}</Link>
+        
       </h2>
       <p>{summary}</p>
       <ul>
@@ -19,6 +22,7 @@ export default function Movie({id, img, title, summary, genres }) {
 }
 
 Movie.prototype = {
+  id:PropTypes.number.isRequired,
   img: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   summary: PropTypes.string.isRequired,
