@@ -2,8 +2,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export default function Movie({ id, img, title, summary, genres }) {
-  console.log("id", id);
-  //여기 id값이 안 들어옴 undefined
+ 
   return (
     <div>
       <img src={img} alt={title}></img>

@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
+import "../App.css";
 
 export default function Detail() {
-  const { idd } = useParams();
+  const { movie_id } = useParams();
+  // const params = useParams(); //params={movie_id:"53277"}
+  //=>구조분해 : const {idd} = params
   const [loading, setLoading] = useState(true);
   const [movie, setMovie] = useState({});
-
+  console.log("params", movie_id);
+  
   const getMovie = async () => {
     const json = await (
-      await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${idd}`)
+      await fetch(
+        `https://yts.mx/api/v2/movie_details.json?movie_id=${movie_id}`
+      )
     ).json();
     console.log("json", json);
     setMovie(json.data.movie);
