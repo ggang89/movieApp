@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import Movie from "../Movie";
 
 export default function Home() {
@@ -31,13 +32,20 @@ export default function Home() {
     getMovies(); //모든 렌더링 후에 실행되는 코드
   }, []);
 
-
   return (
     <>
       {loading ? (
         <h1>Loading...</h1>
       ) : (
         <>
+          <ul>
+            <li>
+              <NavLink to="/">HOME</NavLink>
+            </li>
+            <li>
+              <NavLink to="/movie/:idd">Detail : Movie Description</NavLink>
+            </li>
+          </ul>
           <h1>Movie List</h1>
 
           {movies.map((movie) => (
@@ -55,5 +63,3 @@ export default function Home() {
     </>
   );
 }
-
-  
