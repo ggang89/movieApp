@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "../App.css";
 
 export default function Detail() {
@@ -9,20 +9,20 @@ export default function Detail() {
   const [loading, setLoading] = useState(true);
   const [movie, setMovie] = useState({});
   console.log("params", movie_id);
-  
-  const getMovie = async () => {
-    const json = await (
-      await fetch(
-        `https://yts.mx/api/v2/movie_details.json?movie_id=${movie_id}`
-      )
-    ).json();
-    console.log("json", json);
-    setMovie(json.data.movie);
-    setLoading(false);
-  };
+
   useEffect(() => {
+    const getMovie = async () => {
+      const json = await (
+        await fetch(
+          `https://yts.mx/api/v2/movie_details.json?movie_id=${movie_id}`
+        )
+      ).json();
+      console.log("json", json);
+      setMovie(json.data.movie);
+      setLoading(false);
+    };
     getMovie();
-  }, []);
+  }, [movie_id]);
 
   return (
     <div>
